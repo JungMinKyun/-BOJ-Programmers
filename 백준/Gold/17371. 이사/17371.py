@@ -6,7 +6,7 @@ input = sys.stdin.readline
 def sq_dist(x1, y1, x2, y2):
     return ((x1-x2)**2 + (y1-y2)**2)**0.5
 
-minimum = 2e9
+minimum = 1e9
 x, y = 0, 0
 
 n = int(input())
