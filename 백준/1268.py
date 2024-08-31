@@ -1,22 +1,28 @@
 # 백준 1268 임시반장 정하기
 
-board = [[0] * 9 for _ in range(5)]
+import sys
+input = sys.stdin.readline
 
 students = []
 n = int(input())
 for _ in range(n):
     stud = list(map(int, input().split()))
     students.append(stud)
-    for i in range(5):
-        board[i][stud[i]-1] += 1
 
-ans = [0] * n
+count = 0
+ans = 0
+
 for i in range(n):
-    for j in range(5):
-        elt = students[i][j]
-        if board[j][elt-1] > 1:
-            ans[i] += board[j][elt-1]-1
+    temp_cnt = 0
+    for j in range(n):
+        if i != j:
+            for k in range(5):
+                if students[i][k] == students[j][k]:
+                    temp_cnt += 1
+                    break
+    if temp_cnt > count:
+        count = temp_cnt
+        ans = i + 1
 
-print(ans.index(max(ans))+1)
-
-print(ans)
+if not ans: print(1)
+else: print(ans)
