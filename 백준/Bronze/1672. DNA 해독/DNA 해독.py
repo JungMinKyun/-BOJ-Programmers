@@ -1,4 +1,6 @@
-DNA_DIC = {
+# 백준 1672 DNA 해독
+
+table = {    
     "AA": "A",
     "AG": "C",
     "AC": "A",
@@ -15,13 +17,13 @@ DNA_DIC = {
     "TG": "A",
     "TC": "G",
     "TT": "T",
-}
-
+    }
 
 n = int(input())
-s = list(input())
+dna = list(input())
 
-for i in range(n - 2, -1, -1):
-    s[i] = DNA_DIC[s[i] + s[i + 1]]
-    s[i + 1] = ""
-print(s[0])
+for i in range(n-2, -1, -1):
+    dna[i] = table[dna[i] + dna[i+1]]
+    dna[i+1] = ""
+
+print(dna[0])
